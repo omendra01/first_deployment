@@ -1,0 +1,15 @@
+{% extends 'app/base.html' %}
+{% block content %}
+
+<div class="row">
+      <div class="col md-6 mt-3">
+          <h4 class="text-center alert alert-info"  style="width:50%; margin:auto;">Add Student Record</h4>
+         <form action="" method="post"  style="width:50%; margin:auto;">
+             {% csrf_token %}
+              {{fm.as_p }}
+              <input type="submit" value="Update" class="btn btn-block btn-success"><br>
+           <center><a href="{% url 'show' %}" class="btn btn-lg btn-info d-inline ">Back To Home</a></center>
+         </form>
+    </div>
+</div>
+{% endblock content %}

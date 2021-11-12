@@ -1,0 +1,12 @@
+{% extends 'app/base.html' %}
+{% block content %}
+
+<div class="card mt-2" style="width: 18rem;">
+    <div class="card-body bg-warning">
+      <h5 class="card-title text-center">total student</h5>
+      <center><a href="{% url 'show' %}" class="text-center">{{fm}}</a></center>
+      
+    </div>
+  </div>
+
+{% endblock %}

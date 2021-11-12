@@ -1,0 +1,54 @@
+{% extends 'app/base.html' %}
+{% block content %}
+<table class="table table-hover mt-3"  id="myTable">
+  <thead style="background-color:orange;">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">NAME</th>
+      <th scope="col">EMAIL</th>
+      <th scope="col">ADDRESS</th>
+      <th scope="col">ACTION</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for fm in fm %}
+    <tr>
+      <th scope="row">{{fm.id}}</th>
+      <td>{{fm.name}}</td>
+      <td>{{fm.email}}</td>
+      <td>{{fm.address}}</td>
+      <td><a href="/update/{{fm.id}}" class="btn btn-warning">Edit</a>
+          <a href="/delete/{{fm.id}}" class="btn btn-danger">Delete</a>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+<!---  Table Search code -->
+
+<script>
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+    
+      }
+    }
+  }
+}
+</script>
+{% endblock content %}

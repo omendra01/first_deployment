@@ -1,0 +1,68 @@
+{% extends 'app/base.html' %}
+{% block content %}
+<style>
+.zoom {
+  padding: 50px;
+
+  transition: transform .2s; /* Animation */
+  width: 400px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  color:red;
+
+}
+
+</style>
+<div class="container">
+    <div class="div row">
+        <div class="col-md-4">
+            <h1 class="text-center mt-5"> welcome</h1>
+            <h4 >Addmission open session 2021-2011</h4>
+        </div>
+        <div class="col-md-8">
+            <canvas id="myChart" width="100" height="50"></canvas>
+            <script>
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [{% for fm in fm %} '{{fm.name}}',{% endfor %}],
+                    datasets: [{
+                        label: 'Student Recor',
+                        data: [12, 19, 3, 5, 2, 3],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 3)',
+                            'rgba(54, 162, 235, 1',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+            </script>
+        </div>
+    </div>
+</div>
+{% endblock content %}
